@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  # animakuro-node:
+  #   build:
+  #     context: .
+  #     dockerfile: .
+  #   depends_on:
+  #     - mysql-animakuro
+  #     - redis-animakuro
+  #   ports:
+  #     - "8080:8080"
+  postgresql-animakuro:
+    restart: always
+    image: postgres:14
+    ports:
+      - "6543:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "test@example.com"
+  #     PGADMIN_DEFAULT_PASSWORD: "123456"
+  #   ports:
+  #     - "16543:80"
+  #   depends_on:
+  #     - postgresql-animakuro
+  redis-animakuro:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: always
+    # volumes:
+
