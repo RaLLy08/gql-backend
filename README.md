@@ -23,11 +23,3 @@ docker-compose --env-file .env up
 ```shell
 pnpm dev
 ```
-
-## Todos
-- Add auth middleware
-- Add express request to graphQL ctx
-- Solve issue with nanoid
-- Write error handler and custom errors
-
-
