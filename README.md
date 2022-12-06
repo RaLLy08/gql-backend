@@ -1,9 +1,9 @@
 # Animakuro backend 
 
 ## Requirements:
-1.	Redis
-2.	Postgresql
-3.	SMTP credentials
+	Redis
+	Postgresql
+	SMTP credentials
 
 ## Run
 
