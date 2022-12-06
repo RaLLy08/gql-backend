@@ -1,4 +1,4 @@
-# Animakuro backend 
+# Graphql backend 
 
 ## Requirements:
 	Redis
