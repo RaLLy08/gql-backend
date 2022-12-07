@@ -1,9 +1,10 @@
 # Graphql backend 
 
--realised: 
-    gql schemas validation 
-    authorisation 
-    schemas permissions(all fields)
+##realised: 
+    Gql schemas validation 
+    Authorisation 
+    Gql schemas permissions(all fields)
+    Basic crud
     
 ## Requirements:
 	Redis
