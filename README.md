@@ -8,6 +8,7 @@
 
 ## realised: 
     Gql schemas validation 
+    Error handling
     Authorisation, sessions, thirdparty(facebook)
     Gql schemas permissions(all fields)
     Basic crud
