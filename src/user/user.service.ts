@@ -1,8 +1,8 @@
+import { ThirdPartyAuthInput } from "api/auth/input-schema/third-party.schema"
+import { CreateUserInput } from "api/user/input-schema/create-user.schema"
+import { ThirdPartyAuthType } from "api/user/user.schema"
 import { prisma } from "index"
 
-import { ThirdPartyAuthInput } from "modules/auth/input-schema/third-party.schema"
-import { CreateUserInput } from "./input-schema/create-user.schema"
-import { ThirdPartyAuthType } from "./user.schema"
 
 export class UserService {
     async createUserWithThirdParty(

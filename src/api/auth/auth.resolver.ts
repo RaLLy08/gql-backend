@@ -1,24 +1,19 @@
-import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql'
+import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql'
 import { ICustomContext } from '../../types/custom-context.interface'
 import { ThirdPartyRedirectUrlReturnType } from './auth.schema'
-import { compare, hash } from '@utils/password.util'
 import { randomUUID } from 'crypto'
 import { HttpStatus, GqlHttpException } from '../../errors/errors'
-import JwtTokenService from './jwt-token.service'
-import { FacebookStrategy } from './strategies/facebook.strategy'
-import { AuthService } from './auth.service'
-import { ThirdPartyAuthType, User } from 'modules/user/user.schema'
-import { UserService } from 'modules/user/user.service'
 import { ValidateSchemas } from 'validation'
 import { RegisterInput } from './input-schema/register.schema'
 import { LoginInput } from './input-schema/login.schema'
-import { sendEmailRegistrationConfirmationMail } from '@utils/mail.util'
+import { UserService } from 'user/user.service'
+import { ThirdPartyAuthType, User } from 'api/user/user.schema'
+import { AuthService } from 'auth/auth.service'
+import { FacebookStrategy } from 'auth/strategies/facebook.strategy'
+import JwtTokenService from 'auth/jwt-token.service'
+import * as bcrypt from 'bcrypt'
 
 
-// type ThirdPartyAuthKey = `thirdparty-auth:${ThirdPartyAuthType}:${string}`
-// type EmailAuthKey = `email-auth:${string}`
-
-// type RedisKeys =  ThirdPartyAuthKey | EmailAuthKey
 @Resolver()
 export class AuthResolver {
     private facebookStrategy: FacebookStrategy
@@ -60,9 +55,8 @@ export class AuthResolver {
         const code = randomUUID()
        
         await this.authService.setRegisterConfirmation(code, data);
-
+        console.log(code, 'Confirmation code')
         // Sending email
-        const info = await sendEmailRegistrationConfirmationMail(data.email, `https://animakuro.domain/confirm/${code}`)
 
         // console.log(previewUrl(info))
 
@@ -92,7 +86,7 @@ export class AuthResolver {
             return false
         }
 
-        const hashedPassword = await hash(password)
+        const hashedPassword = await bcrypt.hash(password, 7)
 
         await this.userService.createUser({
             email,
@@ -107,8 +101,8 @@ export class AuthResolver {
     async login(@Arg('data') data: LoginInput, @Ctx() ctx: ICustomContext) {
 
         const user = await this.userService.findUserByUsername(data.username);
-
-        if (!user || !await compare(data.password, user.password))
+        
+        if (!user || !await bcrypt.compare(data.password, user.password))
             throw new GqlHttpException('INVALID_CREDENTIALS', HttpStatus.BAD_REQUEST, 'Auth Errors')
 
         const session = await this.authService.createSiteAuthSession({

@@ -64,7 +64,6 @@ type Mutation {
   login(data: LoginInput!): Boolean!
   loginOrRegisterThirdParty(authType: Gender, code: String!): User!
   logout: Boolean!
-  modifyUser(data: UpdateUserInput!, id: String!): User!
   register(data: RegisterInput!): Boolean!
   updateSeries(data: UpdateSeriesInput!, id: String!): Series!
   updateStudio(data: UpdateStudioInput!, id: String!): Studio!
@@ -120,21 +119,6 @@ input UpdateStudioInput {
   rating: Float
   thumbnail: String
 }
-
-input UpdateUserInput {
-  avatar: Upload
-  banner: Upload
-  birthday: DateTime
-  customGender: String
-  email: String
-  gender: String
-  newPassword: String
-  password: String
-  username: String
-}
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
 
 type User {
   avatar: String

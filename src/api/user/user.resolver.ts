@@ -1,7 +1,7 @@
 import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql'
-import { prisma, redis } from '../../index'
-import { previewUrl, sendEmailChangeConfirmationMail } from '@utils/mail.util'
-import { compare, hash } from '@utils/password.util'
+import { prisma } from '../../index'
+import * as bcrypt from 'bcrypt'
+
 import { randomUUID } from 'crypto'
 import { GqlHttpException, HttpStatus } from '../../errors/errors'
 import { Gender, User } from './user.schema'
@@ -9,7 +9,7 @@ import { UpdateUserInput } from './input-schema/update-user.schema'
 import { ValidateSchemas } from 'validation'
 import { CreateUserInput } from './input-schema/create-user.schema'
 import { ICustomContext } from 'types/custom-context.interface'
-import { UserService } from './user.service'
+import { UserService } from 'user/user.service'
 
 
 @Resolver(() => User)
@@ -54,7 +54,7 @@ export class UserResolver {
         }
 
 
-        const hashedPassword = await hash(data.password)
+        const hashedPassword = await bcrypt.hash(data.password, 7)
 
 
         return await this.userService.createUser({

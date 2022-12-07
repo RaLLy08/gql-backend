@@ -1,12 +1,12 @@
 import { getMetadataStorage, ResolverData } from "type-graphql";
 
-import { ThirdPartyAuthType } from "modules/user/user.schema";
 import { GqlHttpException, HttpStatus } from "errors/errors";
 import { redis } from "index";
 import { ICustomContext } from "types/custom-context.interface";
 import JwtTokenService from "../jwt-token.service";
-import { UserService } from "modules/user/user.service";
+import { UserService } from "user/user.service";
 /* only for testing */
+
 let allReturnTypes;
 let operationsData;
 
@@ -39,7 +39,9 @@ setTimeout(() =>{
 
 const getReturnTypeObject = (returnTypeName) => allReturnTypes.find(el => el.name === returnTypeName);
 const getRejectTypeObject = (returnTypeName) => rejectedFields.find(el => el.name === returnTypeName);
+
 /* only for testing */
+
 export class AuthCheckerMiddleware {
     private jwtTokenService: JwtTokenService
     private userService: UserService;

@@ -1,4 +1,3 @@
-import { validateInputPermission } from 'modules/auth/permission/input-permision-validator';
 import { Arg, Authorized, Mutation, Query, Resolver } from 'type-graphql'
 
 import { GqlHttpException, HttpStatus } from 'errors/errors'

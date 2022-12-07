@@ -9,10 +9,10 @@ import { Server } from 'http'
 import { PrismaClient } from '@prisma/client';
 import 'reflect-metadata'
 
-import { AuthCheckerMiddleware } from './modules/auth/middleware/auth-checker.middleware';
 import * as dotenv from 'dotenv'
 import { ExtendedGraphQLError } from 'errors/types'
 import exceptionsHandler from 'errors/exception-handler'
+import { AuthCheckerMiddleware } from 'auth/middleware/auth-checker.middleware'
 
 
 dotenv.config()

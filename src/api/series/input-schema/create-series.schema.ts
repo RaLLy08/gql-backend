@@ -1,4 +1,3 @@
-import { AllowChangeBy } from "modules/auth/permission/allow-change-by.decorator";
 import { Field, InputType } from "type-graphql";
 
 @InputType()

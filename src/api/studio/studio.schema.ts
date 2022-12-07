@@ -1,4 +1,3 @@
-import { AllowChangeBy } from 'modules/auth/permission/allow-change-by.decorator';
 import { Field, ID, ObjectType } from 'type-graphql'
 
 import { Series } from './../series/series.schema';

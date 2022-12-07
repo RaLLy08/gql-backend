@@ -1,6 +1,6 @@
 import { decode, JwtPayload, sign, verify } from "jsonwebtoken";
 import { ICustomContext } from "types/custom-context.interface";
-import { ThirdPartyAuthType } from './../user/user.schema';
+import { ThirdPartyAuthType } from "api/user/user.schema";
 
 // type ThirdPartyAuthRedisKey = `thirdparty-auth:${ThirdPartyAuthType}:${string}`
 // type EmailAuthKey = `email-auth:${string}`
