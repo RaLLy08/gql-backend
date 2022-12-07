@@ -1,15 +1,15 @@
 version: "3.8"
 services:
-  # animakuro-node:
+  # node:
   #   build:
   #     context: .
   #     dockerfile: .
   #   depends_on:
-  #     - mysql-animakuro
-  #     - redis-animakuro
+  #     - mysql
+  #     - redis
   #   ports:
   #     - "8080:8080"
-  postgresql-animakuro:
+  postgresql:
     restart: always
     image: postgres:14
     ports:
@@ -26,8 +26,8 @@ services:
   #   ports:
   #     - "16543:80"
   #   depends_on:
-  #     - postgresql-animakuro
-  redis-animakuro:
+  #     - postgresql
+  redis:
     image: redis:latest
     ports:
       - "6379:6379"

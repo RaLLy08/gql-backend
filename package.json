@@ -1,7 +1,7 @@
 {
-  "name": "@animakuro/backend",
+  "name": "@gql/backend",
   "version": "0.0.1",
-  "description": "Animakuro backend project.",
+  "description": "Gql backend project.",
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://animakuro-backend@dev.azure.com/animakuro-backend/animakuro-backend/_git/backend"
+    "url": ""
   },
   "keywords": [
     "graphql",
