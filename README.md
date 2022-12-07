@@ -1,5 +1,10 @@
 # Graphql backend 
 
+-realised: 
+    gql schemas validation 
+    authorisation 
+    schemas permissions(all fields)
+    
 ## Requirements:
 	Redis
 	Postgresql
