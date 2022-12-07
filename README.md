@@ -6,7 +6,7 @@
     type-graphql
     prisma
 
-##realised: 
+## realised: 
     Gql schemas validation 
     Authorisation, sessions, thirdparty(facebook)
     Gql schemas permissions(all fields)
