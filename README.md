@@ -1,10 +1,17 @@
 # Graphql backend 
 
+## used technologies
+    graphql
+    graphql-express
+    type-graphql
+    prisma
+
 ##realised: 
     Gql schemas validation 
-    Authorisation 
+    Authorisation, sessions, thirdparty(facebook)
     Gql schemas permissions(all fields)
     Basic crud
+
     
 ## Requirements:
 	Redis
